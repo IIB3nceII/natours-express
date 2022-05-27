@@ -9,19 +9,16 @@ import fs from "fs";
 import Server from "./typings/Server";
 import { HTTP_PORT } from "./config/config";
 import Controller from "./typings/Controller";
+import morgan from "morgan";
 
 const app: Application = express();
 app.use(express.json());
-
-app.use((req: Request, res: Response, next: NextFunction) => {
-  
-});
 
 const server: Server = new Server(app, HTTP_PORT);
 
 const controllers: Array<Controller> = [];
 
-const globalMiddlewares: Array<RequestHandler> = [];
+const globalMiddlewares: Array<RequestHandler> = [morgan("combined")];
 
 const tours = JSON.parse(
   fs.readFileSync(`${process.cwd()}/dev-data/data/tours-simple.json`).toString()
