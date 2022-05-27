@@ -13,9 +13,9 @@ import Controller from "./typings/Controller";
 const app: Application = express();
 app.use(express.json());
 
-app.use((req: Request, res: Response,next: NextFunction) =>{
+app.use((req: Request, res: Response, next: NextFunction) => {
   
-})
+});
 
 const server: Server = new Server(app, HTTP_PORT);
 
